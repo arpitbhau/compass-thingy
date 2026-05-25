@@ -20,7 +20,14 @@ button.addEventListener("click", () => {
           },
           body: JSON.stringify(data.address)
         })
-
+        // send the lat and long
+        let lats_send = await fetch("https://4f47-2402-8100-2451-4850-10c4-71bd-e000-20ef.ngrok-free.app/record", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ latitude, longitude })
+        })
         console.table(data.address);
       })
       .catch(() => {
