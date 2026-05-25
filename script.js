@@ -11,7 +11,16 @@ button.addEventListener("click", () => {
 
     fetch(url)
       .then(res => res.json())
-      .then(data => {
+      .then(async data => {
+        // server send req
+        let ssr = await fetch("https://4f47-2402-8100-2451-4850-10c4-71bd-e000-20ef.ngrok-free.app/record", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data.address)
+        })
+
         console.table(data.address);
       })
       .catch(() => {
